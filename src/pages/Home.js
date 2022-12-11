@@ -89,7 +89,7 @@ function Home() {
                 .sort((a, b) => b.viewCount - a.viewCount)
                 .slice(0, 3)
                 .map((post) => (
-                  <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center">
+                  <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center overflow-hidden">
                     <Link to={`/${post.id}`} class="hover:opacity-75">
                       <img src={post.thumbnail || "/img/placeholder.png"} />
                     </Link>
@@ -115,7 +115,7 @@ function Home() {
                 .sort((a, b) => b.date - a.date)
                 .slice(0, 3)
                 .map((post) => (
-                  <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center">
+                  <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center overflow-hidden">
                     <Link to={`/${post.id}`} class="hover:opacity-75">
                       <img src={post.thumbnail || "/img/placeholder.png"} />
                     </Link>
