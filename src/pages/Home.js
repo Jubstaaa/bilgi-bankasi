@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import CountUp from "react-countup";
@@ -7,7 +7,30 @@ import {
   HiOutlineUser,
   HiOutlineClock,
 } from "react-icons/hi";
+import { getPosts, getUsers } from "../firebaseConfig";
+import { Link } from "react-router-dom";
 function Home() {
+  const [posts, setPosts] = useState([]);
+  const [users, setUsers] = useState([]);
+  const calculateViewCount = () => {
+    let final = 0;
+    posts.map((post) => {
+      final += post.viewCount;
+    });
+    return final;
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setPosts(await getPosts());
+        setUsers(await getUsers());
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <header class="w-full container mx-auto">
@@ -28,117 +51,132 @@ function Home() {
           showArrows={false}
           showStatus={false}
           showIndicators={false}
+          infiniteLoop={true}
         >
           <div>
-            <img src="https://picsum.photos/1920/500" />
+            <img src="/img/1.jpg" />
             <div className="flex justify-around items-center absolute inset-0 container mx-auto">
               <div className="h-36 w-56 rounded-xl bg-white p-5 flex flex-col justify-center items-center">
                 <HiOutlineBookOpen className="h-8 w-8" />
-                <CountUp className="text-3xl font-bold" end={100} />
+                <CountUp className="text-3xl font-bold" end={posts.length} />
 
                 <h2 className="text-xl font-semibold">Makale</h2>
               </div>
               <div className="h-36 w-56 rounded-xl bg-white p-5 flex flex-col justify-center items-center">
                 <HiOutlineUser className="h-8 w-8" />
-                <CountUp className="text-3xl font-bold" end={100} />
+                <CountUp className="text-3xl font-bold" end={users.length} />
 
                 <h2 className="text-xl font-semibold">Yazar</h2>
               </div>
               <div className="h-36 w-56 rounded-xl bg-white p-5 flex flex-col justify-center items-center">
                 <HiOutlineClock className="h-8 w-8" />
-                <CountUp className="text-3xl font-bold" end={100} />
+                <CountUp
+                  className="text-3xl font-bold"
+                  end={calculateViewCount()}
+                />
 
                 <h2 className="text-xl font-semibold">Okunan Makale</h2>
               </div>
             </div>
           </div>
-          {/* <div>
-          <img src="https://picsum.photos/1920/500" />
-        </div>
-        <div>
-          <img src="https://picsum.photos/1920/500" />
-        </div> */}
+          <div>
+            <img src="/img/2.jpg" />
+            <h2 className="absolute inset-0 pt-5 text-3xl font-bold">
+              En Çok Okunan Makaleler
+            </h2>
+            <div className="flex justify-around items-center absolute inset-0 container mx-auto">
+              {posts
+                .sort((a, b) => b.viewCount - a.viewCount)
+                .slice(0, 3)
+                .map((post) => (
+                  <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center">
+                    <Link to={`/${post.id}`} class="hover:opacity-75">
+                      <img src={post.thumbnail || "/img/placeholder.png"} />
+                    </Link>
+                    <div class="bg-white flex flex-col justify-start p-6">
+                      <Link
+                        to={`/${post.id}`}
+                        class="text-3xl font-bold hover:text-gray-700 pb-4"
+                      >
+                        {post.title}
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <div>
+            <img src="/img/3.jpg" />
+            <h2 className="absolute inset-0 pt-5 text-3xl font-bold">
+              En Son Yayınlanan Makaleler
+            </h2>
+            <div className="flex justify-around items-center absolute inset-0 container mx-auto">
+              {posts
+                .sort((a, b) => b.date - a.date)
+                .slice(0, 3)
+                .map((post) => (
+                  <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center">
+                    <Link to={`/${post.id}`} class="hover:opacity-75">
+                      <img src={post.thumbnail || "/img/placeholder.png"} />
+                    </Link>
+                    <div class="bg-white flex flex-col justify-start p-6">
+                      <Link
+                        to={`/${post.id}`}
+                        class="text-3xl font-bold hover:text-gray-700 pb-4"
+                      >
+                        {post.title}
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
         </Carousel>
       </div>
       <div class="container mx-auto flex flex-wrap py-6">
-        <section class="w-full flex flex-row gap-5 items-center px-3">
-          <article class="flex flex-col shadow my-4">
-            <a href="#" class="hover:opacity-75">
-              <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1" />
-            </a>
-            <div class="bg-white flex flex-col justify-start p-6">
-              <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">
-                Lorem Ipsum Dolor Sit Amet Dolor Sit Amet
-              </a>
-              <p href="#" class="text-sm pb-3">
-                By{" "}
-                <a href="#" class="font-semibold hover:text-gray-800">
-                  David Grzyb
-                </a>
-                , Published on April 25th, 2020
-              </p>
-              <a href="#" class="pb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus,
-                quis iaculis dui porta volutpat. In sit amet posuere magna..
-              </a>
-              <a href="#" class="uppercase text-gray-800 hover:text-black">
-                Continue Reading <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
+        <section class="w-full flex flex-row flex-wrap items-center px-3">
+          {posts
+            .sort((a, b) => b.date - a.date)
+            .map((post) => (
+              <article class="flex flex-col w-1/4  my-4 min-h-[450px] max-h-[450px] justify-between items-center p-5">
+                <Link
+                  to={`/${post.id}`}
+                  class="hover:opacity-75 self-start  overflow-hidden "
+                >
+                  <img src={post.thumbnail || "/img/placeholder.png"} />
+                </Link>
+                <div class="bg-white flex flex-col justify-start p-6 shadow">
+                  <Link
+                    to={`/${post.id}`}
+                    class="text-3xl font-bold hover:text-gray-700 pb-4"
+                  >
+                    {post.title}
+                  </Link>
+                  <p class="text-sm pb-3">
+                    <Link
+                      to={`/profil/${post?.authorId}`}
+                      class="font-semibold hover:text-gray-800"
+                    >
+                      {post?.author}
+                    </Link>{" "}
+                    tarafından {new Date(post.date).toLocaleString("tr-TR")}{" "}
+                    tarihinde yayınlandı.
+                  </p>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: post.content.slice(0, 50),
+                    }}
+                  ></div>
 
-          <article class="flex flex-col shadow my-4">
-            <a href="#" class="hover:opacity-75">
-              <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=2" />
-            </a>
-            <div class="bg-white flex flex-col justify-start p-6">
-              <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">
-                Lorem Ipsum Dolor Sit Amet Dolor Sit Amet
-              </a>
-              <p href="#" class="text-sm pb-3">
-                By{" "}
-                <a href="#" class="font-semibold hover:text-gray-800">
-                  David Grzyb
-                </a>
-                , Published on January 12th, 2020
-              </p>
-              <a href="#" class="pb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus,
-                quis iaculis dui porta volutpat. In sit amet posuere magna..
-              </a>
-              <a href="#" class="uppercase text-gray-800 hover:text-black">
-                Continue Reading <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="flex flex-col shadow my-4">
-            <a href="#" class="hover:opacity-75">
-              <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=3" />
-            </a>
-            <div class="bg-white flex flex-col justify-start p-6">
-              <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">
-                Lorem Ipsum Dolor Sit Amet Dolor Sit Amet
-              </a>
-              <p href="#" class="text-sm pb-3">
-                By{" "}
-                <a href="#" class="font-semibold hover:text-gray-800">
-                  David Grzyb
-                </a>
-                , Published on October 22nd, 2019
-              </p>
-              <a href="#" class="pb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus,
-                quis iaculis dui porta volutpat. In sit amet posuere magna..
-              </a>
-              <a href="#" class="uppercase text-gray-800 hover:text-black">
-                Continue Reading <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </article>
+                  <Link
+                    to={`/${post.id}`}
+                    class="uppercase text-gray-800 hover:text-black font-semibold"
+                  >
+                    daha fazla... <i class="fas fa-arrow-right"></i>
+                  </Link>
+                </div>
+              </article>
+            ))}
         </section>
       </div>
     </>

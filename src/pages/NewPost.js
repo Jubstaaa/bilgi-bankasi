@@ -3,9 +3,10 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Formik, Form } from "formik";
 import { addPost } from "../firebaseConfig";
+import { useNavigate } from "react-router-dom";
 function NewPost() {
   const [content, setContent] = useState("");
-
+  let navigate = useNavigate();
   const modules = {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -46,6 +47,7 @@ function NewPost() {
           }}
           onSubmit={({ profilePhoto, displayName, title, bio, thumbnail }) => {
             addPost(profilePhoto, displayName, title, bio, thumbnail, content);
+            navigate("/");
           }}
         >
           {({ values, handleSubmit, handleChange }) => (
@@ -94,7 +96,6 @@ function NewPost() {
                     className="w-full border-[1px] border-secondaryBorder p-1 resize-none	"
                     type="text"
                     name="bio"
-                    maxLength="150"
                     onChange={handleChange}
                     value={values.bio}
                   />
@@ -149,9 +150,8 @@ function NewPost() {
                 modules={modules}
                 formats={formats}
               />
-              {JSON.stringify(content)}
-              {JSON.stringify(values)}
-              <div className="flex items-center justify-center space-x-5 w-full">
+
+              <div className="flex items-center justify-center w-full py-10">
                 <div className=" w-full flex justify-between items-center">
                   <button
                     className="h-[30px] w-full mt-1  flex items-center justify-center gap-x-2 rounded-md bg-brand font-semibold text-sm text-white bg-green-500 disabled:opacity-60 "

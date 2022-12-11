@@ -12,6 +12,11 @@ import {
   doc,
   arrayUnion,
   setDoc,
+  getDoc,
+  getDocs,
+  query,
+  collection,
+  orderBy,
 } from "firebase/firestore";
 import { setPostId } from "./components/Functions";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -68,11 +73,55 @@ export const addPost = async (
       title,
       thumbnail,
       content,
+      date: new Date().getTime(),
+      viewCount: 0,
+      author: displayName,
+      authorId: setPostId(displayName),
     });
     await setDoc(doc(db, "users", setPostId(displayName)), {
       profilePhoto,
       displayName,
       bio,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getPosts = async () => {
+  const posts = [];
+  const postsRef = await getDocs(
+    query(collection(db, "posts"), orderBy("date", "desc"))
+  );
+  postsRef.forEach((doc) => {
+    posts.push({ ...doc?.data(), id: doc?.id });
+  });
+  return posts;
+};
+
+export const getUsers = async () => {
+  const users = [];
+  const usersRef = await getDocs(query(collection(db, "users")));
+  usersRef.forEach((doc) => {
+    users.push({ ...doc?.data() });
+  });
+  return users;
+};
+
+export const getPost = async (postId) => {
+  return (await getDoc(doc(db, "posts", postId)))?.data();
+};
+
+export const getUser = async (username) => {
+  return (await getDoc(doc(db, "users", username)))?.data();
+};
+
+export const updateViewCount = async (postId) => {
+  try {
+    const viewCount = (await getDoc(doc(db, "posts", postId)))?.data()
+      .viewCount;
+    await updateDoc(doc(db, "posts", postId), {
+      viewCount: viewCount + 1,
     });
   } catch (e) {
     console.log(e);
