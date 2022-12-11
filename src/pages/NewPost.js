@@ -6,8 +6,11 @@ import { addPost } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 function NewPost() {
+  // Post içeriğini tutacak state
   const [content, setContent] = useState("");
+  // Postu yayınladıktan sonra kullanıcıyı anasayfaya useNavigate ile yönlendiriyoruz.
   let navigate = useNavigate();
+  // Text editör için custom tool
   const modules = {
     toolbar: [
       [{ header: [1, 2, false] }],

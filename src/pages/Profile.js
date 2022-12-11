@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 import { getUser } from "../firebaseConfig";
 import { Helmet } from "react-helmet";
 function Profile() {
+  // Urlden username bilgisi useparams hooku ile alınıyor
   const { username } = useParams();
+  // User bilgilerini tutacak state
   const [user, setUsers] = useState([]);
+  // Sayfa Yüklendiğinde veya urlde username bilgisi değiştiğinde ilgili kullanıcının bilgilerini database üzerinden getirecek fonksiyon
   useEffect(() => {
     const fetchData = async () => {
       try {

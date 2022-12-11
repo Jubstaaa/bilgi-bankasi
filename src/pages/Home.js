@@ -10,8 +10,10 @@ import {
 import { getPosts, getUsers } from "../firebaseConfig";
 import { Link } from "react-router-dom";
 function Home() {
+  // Makalelerin ve kullanıcıların bilgilerin tutan stateler
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
+  //Toplam makale görüntülenme sayısını hesaplayan fonksiyon
   const calculateViewCount = () => {
     let final = 0;
     posts.map((post) => {
@@ -19,6 +21,7 @@ function Home() {
     });
     return final;
   };
+  // Sayfa Yüklendiğinde makalelerin ve kullanıcıların bilgilerini database üzerinden getirecek fonksiyon
   useEffect(() => {
     const fetchData = async () => {
       try {

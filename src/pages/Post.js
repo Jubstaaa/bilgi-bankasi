@@ -3,12 +3,16 @@ import { useState, useEffect } from "react";
 import { getPost, updateViewCount } from "../firebaseConfig";
 import { Helmet } from "react-helmet";
 function Post() {
+  // Urlden postname bilgisi useparams hooku ile alınıyor
   const { postName } = useParams();
+  // Post bilgilerini tutacak state
   const [post, setPost] = useState([]);
+  // Sayfa Yüklendiğinde veya urlde postName bilgisi değiştiğinde ilgili makalenin bilgilerini database üzerinden getirecek fonksiyon
   useEffect(() => {
     const fetchData = async () => {
       try {
         setPost(await getPost(postName));
+        //Sayfa her görüntülendiğinde database üzerinde makale görüntülenme sayısını güncelleyecek fonksyion
         updateViewCount(postName);
       } catch (e) {
         console.log(e);

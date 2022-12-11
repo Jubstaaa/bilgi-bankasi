@@ -29,6 +29,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
+//Postu ve kullanıcıyı database üzerine yazan fonksyion
 export const addPost = async (
   profilePhoto,
   displayName,
@@ -57,6 +58,7 @@ export const addPost = async (
   }
 };
 
+//Database üzerinden makaleleri okuyan fonksyion
 export const getPosts = async () => {
   const posts = [];
   const postsRef = await getDocs(
@@ -68,6 +70,8 @@ export const getPosts = async () => {
   return posts;
 };
 
+//Database üzerinden kullanıcıları okuyon fonksiyon
+
 export const getUsers = async () => {
   const users = [];
   const usersRef = await getDocs(query(collection(db, "users")));
@@ -77,14 +81,17 @@ export const getUsers = async () => {
   return users;
 };
 
+// Database üzerinden belirli bir postu okuyan fonksyion
 export const getPost = async (postId) => {
   return (await getDoc(doc(db, "posts", postId)))?.data();
 };
 
+// Database üzerinden belirli bir kullanıcıyı okuyan fonksyion
 export const getUser = async (username) => {
   return (await getDoc(doc(db, "users", username)))?.data();
 };
 
+//Post her görüntülendiğinde database üzerinde makale görüntülenme sayısını güncelleyecek fonksyion
 export const updateViewCount = async (postId) => {
   try {
     const viewCount = (await getDoc(doc(db, "posts", postId)))?.data()
