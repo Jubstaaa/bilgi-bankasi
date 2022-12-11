@@ -14,26 +14,26 @@ function Post() {
       }
     };
     fetchData();
-  }, []);
+  }, [postName]);
 
   return (
-    <div class="container mx-auto flex flex-wrap py-6">
-      <section class="w-full flex flex-col items-center px-3">
-        <article class="flex flex-col shadow my-4 w-full">
+    <div className="container mx-auto flex flex-wrap py-6">
+      <section className="w-full flex flex-col items-center px-3">
+        <article className="flex flex-col shadow my-4 w-full">
           {post.thumbnail && (
-            <div class="hover:opacity-75">
+            <div className="hover:opacity-75">
               <img className="m-auto" src={post.thumbnail} />
             </div>
           )}
 
-          <div class="bg-white flex flex-col justify-start p-6">
-            <h1 class="text-3xl font-bold hover:text-gray-700 pb-4">
+          <div className="bg-white flex flex-col justify-start p-6">
+            <h1 className="text-3xl font-bold hover:text-gray-700 pb-4">
               {post.title}
             </h1>
-            <p class="text-sm pb-3">
+            <p className="text-sm pb-3">
               <Link
                 to={`/profil/${post?.authorId}`}
-                class="font-semibold hover:text-gray-800"
+                className="font-semibold hover:text-gray-800"
               >
                 {post?.author}
               </Link>{" "}

@@ -33,15 +33,15 @@ function Home() {
 
   return (
     <>
-      <header class="w-full container mx-auto">
-        <div class="flex flex-col items-center py-12">
+      <header className="w-full container mx-auto">
+        <div className="flex flex-col items-center py-12">
           <a
-            class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl"
+            className="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl"
             href="#"
           >
             Bilgi Bankası
           </a>
-          <p class="text-lg text-gray-600">Lorem Ipsum Dolor Sit Amet</p>
+          <p className="text-lg text-gray-600">Lorem Ipsum Dolor Sit Amet</p>
         </div>
       </header>
       <div>
@@ -90,13 +90,13 @@ function Home() {
                 .slice(0, 3)
                 .map((post) => (
                   <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center overflow-hidden">
-                    <Link to={`/${post.id}`} class="hover:opacity-75">
+                    <Link to={`/${post.id}`} className="hover:opacity-75">
                       <img src={post.thumbnail || "/img/placeholder.png"} />
                     </Link>
-                    <div class="bg-white flex flex-col justify-start p-6">
+                    <div className="bg-white flex flex-col justify-start p-6">
                       <Link
                         to={`/${post.id}`}
-                        class="text-3xl font-bold hover:text-gray-700 pb-4"
+                        className="text-3xl font-bold hover:text-gray-700 pb-4"
                       >
                         {post.title}
                       </Link>
@@ -116,13 +116,13 @@ function Home() {
                 .slice(0, 3)
                 .map((post) => (
                   <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center overflow-hidden">
-                    <Link to={`/${post.id}`} class="hover:opacity-75">
+                    <Link to={`/${post.id}`} className="hover:opacity-75">
                       <img src={post.thumbnail || "/img/placeholder.png"} />
                     </Link>
-                    <div class="bg-white flex flex-col justify-start p-6">
+                    <div className="bg-white flex flex-col justify-start p-6">
                       <Link
                         to={`/${post.id}`}
-                        class="text-3xl font-bold hover:text-gray-700 pb-4"
+                        className="text-3xl font-bold hover:text-gray-700 pb-4"
                       >
                         {post.title}
                       </Link>
@@ -133,29 +133,29 @@ function Home() {
           </div>
         </Carousel>
       </div>
-      <div class="container mx-auto flex flex-wrap py-6">
-        <section class="w-full flex flex-row flex-wrap items-center px-3">
+      <div className="container mx-auto flex flex-wrap py-6">
+        <section className="w-full flex flex-row flex-wrap items-center px-3">
           {posts
             .sort((a, b) => b.date - a.date)
             .map((post) => (
-              <article class="flex flex-col w-1/4  my-4 min-h-[450px] max-h-[450px] justify-between items-center p-5">
+              <article className="flex flex-col w-1/4  my-4 min-h-[450px] max-h-[450px] justify-between items-center p-5">
                 <Link
                   to={`/${post.id}`}
-                  class="hover:opacity-75 self-start  overflow-hidden "
+                  className="hover:opacity-75 self-start  overflow-hidden "
                 >
                   <img src={post.thumbnail || "/img/placeholder.png"} />
                 </Link>
-                <div class="bg-white flex flex-col justify-start p-6 shadow">
+                <div className="bg-white flex flex-col justify-start p-6 shadow">
                   <Link
                     to={`/${post.id}`}
-                    class="text-3xl font-bold hover:text-gray-700 pb-4"
+                    className="text-3xl font-bold hover:text-gray-700 pb-4"
                   >
                     {post.title}
                   </Link>
-                  <p class="text-sm pb-3">
+                  <p className="text-sm pb-3">
                     <Link
                       to={`/profil/${post?.authorId}`}
-                      class="font-semibold hover:text-gray-800"
+                      className="font-semibold hover:text-gray-800"
                     >
                       {post?.author}
                     </Link>{" "}
@@ -170,9 +170,9 @@ function Home() {
 
                   <Link
                     to={`/${post.id}`}
-                    class="uppercase text-gray-800 hover:text-black font-semibold"
+                    className="uppercase text-gray-800 hover:text-black font-semibold"
                   >
-                    daha fazla... <i class="fas fa-arrow-right"></i>
+                    daha fazla... <i className="fas fa-arrow-right"></i>
                   </Link>
                 </div>
               </article>

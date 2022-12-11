@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Formik, Form } from "formik";
@@ -35,8 +35,8 @@ function NewPost() {
     "image",
   ];
   return (
-    <div class="container mx-auto flex flex-wrap py-6 relative items-center justify-center">
-      <section class="w-full flex flex-col justify-center items-center px-3 space-y-6">
+    <div className="container mx-auto flex flex-wrap py-6 relative items-center justify-center">
+      <section className="w-full flex flex-col justify-center items-center px-3 space-y-6">
         <Formik
           initialValues={{
             profilePhoto: "",
@@ -165,7 +165,7 @@ function NewPost() {
           )}
         </Formik>
       </section>
-      <section class="w-full h-96 flex flex-col justify-center items-center px-3 space-y-6"></section>
+      <section className="w-full h-96 flex flex-col justify-center items-center px-3 space-y-6"></section>
     </div>
   );
 }

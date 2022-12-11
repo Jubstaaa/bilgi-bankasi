@@ -1,16 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
-import {
   getFirestore,
   updateDoc,
   doc,
-  arrayUnion,
   setDoc,
   getDoc,
   getDocs,
@@ -34,31 +27,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
 export const db = getFirestore(app);
-
-// export const addProfilePhoto = (file) => {
-//   if (!file) {
-//     return;
-//   } else if (!file.type.includes("image/jp")) {
-//     return "error";
-//   } else {
-//     const storageRef = ref(storage, file.name);
-//     const uploadTask = uploadBytesResumable(storageRef, file);
-//     uploadTask.on(
-//       "state_changed",
-//       (snapshot) => {},
-//       (error) => {
-//         console.log(error);
-//       },
-//       () => {
-//         getDownloadURL(uploadTask.snapshot?.ref).then(async (downloadURL) => {
-//           return downloadURL;
-//         });
-//       }
-//     );
-//   }
-// };
 
 export const addPost = async (
   profilePhoto,

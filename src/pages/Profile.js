@@ -13,33 +13,33 @@ function Profile() {
       }
     };
     fetchData();
-  }, []);
+  }, [username]);
 
   return (
-    <div class="container mx-auto flex flex-wrap py-6">
-      <section class="w-full  flex flex-col items-center px-3">
-        <div class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
-          <div class="w-full md:w-1/5 flex justify-center md:justify-start pb-4">
+    <div className="container mx-auto flex flex-wrap py-6">
+      <section className="w-full  flex flex-col items-center px-3">
+        <div className="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
+          <div className="w-full md:w-1/5 flex justify-center md:justify-start pb-4">
             <img
               src={user.profilePhoto || "/img/no-avatar.jpeg"}
-              class="rounded-full shadow h-32 w-32 object-cover"
+              className="rounded-full shadow h-32 w-32 object-cover"
             />
           </div>
-          <div class="flex-1 flex flex-col justify-center md:justify-start">
-            <p class="font-semibold text-2xl">{user.displayName}</p>
-            <p class="pt-2">{user.bio}</p>
-            <div class="flex items-center justify-center md:justify-start text-2xl no-underline text-blue-800 pt-4">
-              <a class="" href="#">
-                <i class="fab fa-facebook"></i>
+          <div className="flex-1 flex flex-col justify-center md:justify-start">
+            <p className="font-semibold text-2xl">{user.displayName}</p>
+            <p className="pt-2">{user.bio}</p>
+            <div className="flex items-center justify-center md:justify-start text-2xl no-underline text-blue-800 pt-4">
+              <a className="" href="#">
+                <i className="fab fa-facebook"></i>
               </a>
-              <a class="pl-4" href="#">
-                <i class="fab fa-instagram"></i>
+              <a className="pl-4" href="#">
+                <i className="fab fa-instagram"></i>
               </a>
-              <a class="pl-4" href="#">
-                <i class="fab fa-twitter"></i>
+              <a className="pl-4" href="#">
+                <i className="fab fa-twitter"></i>
               </a>
-              <a class="pl-4" href="#">
-                <i class="fab fa-linkedin"></i>
+              <a className="pl-4" href="#">
+                <i className="fab fa-linkedin"></i>
               </a>
             </div>
           </div>
