@@ -59,16 +59,19 @@ function NewPost() {
               onSubmit={handleSubmit}
               className="flex flex-col justify-start items-center w-full space-y-5"
             >
-              <div className="flex items-start justify-center space-x-5 w-full">
-                <label className=" font-semibold pt-1 text-end">
-                  Profil Fotoğrafı
-                </label>
-                <img
-                  className="h-10 w-10 cursor-pointer col-span-2 justify-self-end rounded-full object-cover"
-                  src={values.profilePhoto || "/img/no-avatar.jpeg"}
-                  alt=""
-                />
-                <div className=" w-full flex flex-col justify-center items-start space-y-3">
+              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+                <div className="col-span-1 flex space-x-2">
+                  <label className="font-semibold pt-1 text-end">
+                    Profil Fotoğrafı
+                  </label>
+                  <img
+                    className="h-10 w-10 cursor-pointer rounded-full object-cover"
+                    src={values.profilePhoto || "/img/no-avatar.jpeg"}
+                    alt=""
+                  />
+                </div>
+
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
                   <input
                     className="w-full border-[1px] border-secondaryBorder p-1"
                     type="text"
@@ -79,9 +82,11 @@ function NewPost() {
                   />
                 </div>
               </div>
-              <div className="flex items-start justify-center space-x-5 w-full">
-                <label className=" font-semibold pt-1 text-end">İsim</label>
-                <div className=" w-full flex flex-col justify-center items-start space-y-3">
+              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+                <label className="col-span-1 font-semibold pt-1 text-end">
+                  İsim
+                </label>
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
                   <input
                     required
                     className="w-full border-[1px] border-secondaryBorder p-1"
@@ -93,9 +98,11 @@ function NewPost() {
                 </div>
               </div>
 
-              <div className="flex items-start justify-center space-x-5 w-full">
-                <label className="font-semibold pt-1 text-end">Özgeçmiş</label>
-                <div className=" w-full flex flex-col justify-center items-start space-y-3">
+              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+                <label className=" col-span-1 font-semibold pt-1 text-end">
+                  Özgeçmiş
+                </label>
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
                   <textarea
                     className="w-full border-[1px] border-secondaryBorder p-1 resize-none	"
                     type="text"
@@ -105,9 +112,11 @@ function NewPost() {
                   />
                 </div>
               </div>
-              <div className="flex items-start justify-center space-x-5 w-full">
-                <label className=" font-semibold pt-1 text-end">Başlık</label>
-                <div className=" w-full flex flex-col justify-center items-start space-y-3">
+              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+                <label className="col-span-1 font-semibold pt-1 text-end">
+                  Başlık
+                </label>
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
                   <input
                     required
                     className="w-full border-[1px] border-secondaryBorder p-1"
@@ -118,12 +127,12 @@ function NewPost() {
                   />
                 </div>
               </div>
-              <div className="flex items-start justify-center space-x-5 w-full">
-                <label className=" font-semibold pt-1 text-end">
+              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+                <label className="col-span-1 font-semibold pt-1 text-end">
                   Kapak Resmi
                 </label>
 
-                <div className=" w-full flex flex-col justify-center items-start space-y-3">
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
                   <input
                     className="w-full border-[1px] border-secondaryBorder p-1"
                     type="text"
