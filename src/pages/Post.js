@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getPost, updateViewCount } from "../firebaseConfig";
+import { Helmet } from "react-helmet";
 function Post() {
   const { postName } = useParams();
   const [post, setPost] = useState([]);
@@ -18,6 +19,9 @@ function Post() {
 
   return (
     <div className="container mx-auto flex flex-wrap py-6">
+      <Helmet>
+        <title>{`${post.title} | Bilgi Bankası`}</title>
+      </Helmet>
       <section className="w-full flex flex-col items-center px-3">
         <article className="flex flex-col shadow my-4 w-full">
           {post.thumbnail && (

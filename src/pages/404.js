@@ -1,8 +1,12 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 function ErrorPage() {
   return (
     <div className="container mx-auto flex flex-wrap py-6">
+      <Helmet>
+        <title>404 | Bilgi Bankası</title>
+      </Helmet>
       <section className="w-full  flex flex-col items-center px-3">
         <div className="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6 gap-10">
           <div className="w-full md:w-1/5 flex justify-center md:justify-start pb-4">

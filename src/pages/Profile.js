@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getUser } from "../firebaseConfig";
+import { Helmet } from "react-helmet";
 function Profile() {
   const { username } = useParams();
   const [user, setUsers] = useState([]);
@@ -17,6 +18,9 @@ function Profile() {
 
   return (
     <div className="container mx-auto flex flex-wrap py-6">
+      <Helmet>
+        <title>{`${user.displayName} | Bilgi Bankası`}</title>
+      </Helmet>
       <section className="w-full  flex flex-col items-center px-3">
         <div className="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
           <div className="w-full md:w-1/5 flex justify-center md:justify-start pb-4">

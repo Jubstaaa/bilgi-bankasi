@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import { Formik, Form } from "formik";
 import { addPost } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 function NewPost() {
   const [content, setContent] = useState("");
   let navigate = useNavigate();
@@ -36,6 +37,9 @@ function NewPost() {
   ];
   return (
     <div className="container mx-auto flex flex-wrap py-6 relative items-center justify-center">
+      <Helmet>
+        <title>Yeni Makale | Bilgi Bankası</title>
+      </Helmet>
       <section className="w-full flex flex-col justify-center items-center px-3 space-y-6">
         <Formik
           initialValues={{
