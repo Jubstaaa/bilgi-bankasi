@@ -49,7 +49,7 @@ function Home() {
       </header>
       <div className="hidden 2xl:block">
         <Carousel
-          // autoPlay
+          autoPlay
           showThumbs={false}
           showArrows={false}
           showStatus={false}
