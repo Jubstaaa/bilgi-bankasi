@@ -62,7 +62,7 @@ function NewPost() {
               onSubmit={handleSubmit}
               className="flex flex-col justify-start items-center w-full space-y-5"
             >
-              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+              <div className="flex flex-col items-center space-y-3 sm:space-y-0 sm:grid grid-cols-12 sm:items-start justify-center sm:space-x-5 w-full">
                 <div className="col-span-1 flex space-x-2">
                   <label className="font-semibold pt-1 text-end">
                     Profil Fotoğrafı
@@ -74,7 +74,7 @@ function NewPost() {
                   />
                 </div>
 
-                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3 w-full sm:w-auto">
                   <input
                     className="w-full border-[1px] border-secondaryBorder p-1"
                     type="text"
@@ -85,11 +85,11 @@ function NewPost() {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+              <div className="flex flex-col items-center space-y-3 sm:space-y-0 sm:grid grid-cols-12 sm:items-start justify-center sm:space-x-5 w-full">
                 <label className="col-span-1 font-semibold pt-1 text-end">
                   İsim
                 </label>
-                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3 w-full sm:w-auto">
                   <input
                     required
                     className="w-full border-[1px] border-secondaryBorder p-1"
@@ -101,11 +101,11 @@ function NewPost() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+              <div className="flex flex-col items-center space-y-3 sm:space-y-0 sm:grid grid-cols-12 sm:items-start justify-center sm:space-x-5 w-full">
                 <label className=" col-span-1 font-semibold pt-1 text-end">
                   Özgeçmiş
                 </label>
-                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3 w-full sm:w-auto">
                   <textarea
                     className="w-full border-[1px] border-secondaryBorder p-1 resize-none	"
                     type="text"
@@ -115,11 +115,11 @@ function NewPost() {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+              <div className="flex flex-col items-center space-y-3 sm:space-y-0 sm:grid grid-cols-12 sm:items-start justify-center sm:space-x-5 w-full">
                 <label className="col-span-1 font-semibold pt-1 text-end">
                   Başlık
                 </label>
-                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3 w-full sm:w-auto">
                   <input
                     required
                     className="w-full border-[1px] border-secondaryBorder p-1"
@@ -130,12 +130,12 @@ function NewPost() {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-12 items-start justify-center space-x-5 w-full">
+              <div className="flex flex-col items-center space-y-3 sm:space-y-0 sm:grid grid-cols-12 sm:items-start justify-center sm:space-x-5 w-full">
                 <label className="col-span-1 font-semibold pt-1 text-end">
                   Kapak Resmi
                 </label>
 
-                <div className="col-span-11 flex flex-col justify-center items-start space-y-3">
+                <div className="col-span-11 flex flex-col justify-center items-start space-y-3 w-full sm:w-auto">
                   <input
                     className="w-full border-[1px] border-secondaryBorder p-1"
                     type="text"
@@ -167,7 +167,7 @@ function NewPost() {
                 formats={formats}
               />
 
-              <div className="flex items-center justify-center w-full py-10">
+              <div className="flex items-center justify-center w-full py-16 sm:py-10">
                 <div className=" w-full flex justify-between items-center">
                   <button
                     className="h-[30px] w-full mt-1  flex items-center justify-center gap-x-2 rounded-md bg-brand font-semibold text-sm text-white bg-green-500 disabled:opacity-60 "
@@ -181,7 +181,6 @@ function NewPost() {
           )}
         </Formik>
       </section>
-      <section className="w-full h-96 flex flex-col justify-center items-center px-3 space-y-6"></section>
     </div>
   );
 }

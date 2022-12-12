@@ -47,9 +47,9 @@ function Home() {
           <p className="text-lg text-gray-600">Lorem Ipsum Dolor Sit Amet</p>
         </div>
       </header>
-      <div>
+      <div className="hidden 2xl:block">
         <Carousel
-          autoPlay
+          // autoPlay
           showThumbs={false}
           showArrows={false}
           showStatus={false}
@@ -84,54 +84,70 @@ function Home() {
           </div>
           <div>
             <img src="/img/2.jpg" />
-            <h2 className="absolute inset-0 pt-5 text-3xl font-bold">
-              En Çok Okunan Makaleler
-            </h2>
-            <div className="flex justify-around items-center absolute inset-0 container mx-auto">
-              {posts
-                .sort((a, b) => b.viewCount - a.viewCount)
-                .slice(0, 3)
-                .map((post) => (
-                  <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center overflow-hidden">
-                    <Link to={`/${post.id}`} className="hover:opacity-75">
-                      <img src={post.thumbnail || "/img/placeholder.png"} />
-                    </Link>
-                    <div className="bg-white flex flex-col justify-start p-6">
+            <div className="flex flex-col h-full w-full absolute inset-0 space-y-5">
+              <h2 className=" inset-0 pt-5 text-3xl font-bold">
+                En Çok Okunan Makaleler
+              </h2>
+              <div className="flex justify-around items-center inset-0 container mx-auto">
+                {posts
+                  .sort((a, b) => b.viewCount - a.viewCount)
+                  .slice(0, 3)
+                  .map((post) => (
+                    <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center overflow-hidden">
                       <Link
                         to={`/${post.id}`}
-                        className="text-3xl font-bold hover:text-gray-700 pb-4"
+                        className="hover:opacity-75 h-1/2"
                       >
-                        {post.title}
+                        <img
+                          className="w-full h-36 object-cover"
+                          src={post.thumbnail || "/img/placeholder.png"}
+                        />
                       </Link>
+                      <div className="bg-white flex flex-col justify-start p-6 h-1/2">
+                        <Link
+                          to={`/${post.id}`}
+                          className="text-3xl font-bold hover:text-gray-700 pb-4"
+                        >
+                          {post.title}
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+              </div>
             </div>
           </div>
           <div>
             <img src="/img/3.jpg" />
-            <h2 className="absolute inset-0 pt-5 text-3xl font-bold">
-              En Son Yayınlanan Makaleler
-            </h2>
-            <div className="flex justify-around items-center absolute inset-0 container mx-auto">
-              {posts
-                .sort((a, b) => b.date - a.date)
-                .slice(0, 3)
-                .map((post) => (
-                  <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center overflow-hidden">
-                    <Link to={`/${post.id}`} className="hover:opacity-75">
-                      <img src={post.thumbnail || "/img/placeholder.png"} />
-                    </Link>
-                    <div className="bg-white flex flex-col justify-start p-6">
+            <div className="flex flex-col h-full w-full absolute inset-0 space-y-5">
+              <h2 className=" inset-0 pt-5 text-3xl font-bold">
+                En Son Yayınlanan Makaleler
+              </h2>
+              <div className="flex justify-around items-center  inset-0 container mx-auto">
+                {posts
+                  .sort((a, b) => b.date - a.date)
+                  .slice(0, 3)
+                  .map((post) => (
+                    <div className="h-80 w-80 rounded-xl bg-white p-5 flex flex-col justify-center items-center overflow-hidden">
                       <Link
                         to={`/${post.id}`}
-                        className="text-3xl font-bold hover:text-gray-700 pb-4"
+                        className="hover:opacity-75 h-1/2"
                       >
-                        {post.title}
+                        <img
+                          className="w-full h-36 object-cover"
+                          src={post.thumbnail || "/img/placeholder.png"}
+                        />
                       </Link>
+                      <div className="bg-white flex flex-col justify-start p-6 h-1/2">
+                        <Link
+                          to={`/${post.id}`}
+                          className="text-3xl font-bold hover:text-gray-700 pb-4"
+                        >
+                          {post.title}
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+              </div>{" "}
             </div>
           </div>
         </Carousel>
@@ -141,14 +157,17 @@ function Home() {
           {posts
             .sort((a, b) => b.date - a.date)
             .map((post) => (
-              <article className="flex flex-col w-1/4  my-4 min-h-[450px] max-h-[450px] justify-between items-center p-5">
+              <article className="flex flex-col w-full sm:w-1/2 xl:w-1/4  my-4 min-h-[450px]  max-h-[450px] justify-between items-center p-5">
                 <Link
                   to={`/${post.id}`}
-                  className="hover:opacity-75 self-start  overflow-hidden "
+                  className="hover:opacity-75 self-start  overflow-hidden h-1/4 "
                 >
-                  <img src={post.thumbnail || "/img/placeholder.png"} />
+                  <img
+                    className="object-cover"
+                    src={post.thumbnail || "/img/placeholder.png"}
+                  />
                 </Link>
-                <div className="bg-white flex flex-col justify-start p-6 shadow">
+                <div className="bg-white flex flex-col justify-start p-6 shadow h-1/3">
                   <Link
                     to={`/${post.id}`}
                     className="text-3xl font-bold hover:text-gray-700 pb-4"
