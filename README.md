@@ -1,5 +1,7 @@
 Projeyi Reactjs ile kodladım, backend kısmı için firebase kullandım. Kullancılıların makale paylaşabildiği, profil sayfalarının bulunduğu ve belirli istatistiklerin paylaşıldığı bir proje geliştirdim. Firebase config bilgileri açık olarak paylaşıldı proje localde de çalıştırılabilir.
 
+https://jubstaa-bilgi-bankasi.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
